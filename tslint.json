@@ -5,6 +5,8 @@
     ],
     "jsRules": {},
     "rules": {
+        "member-access": false,
+        "no-empty": false,
         "object-literal-sort-keys": false,
         "ordered-imports": false,
         "quotemark": {
