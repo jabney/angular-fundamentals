@@ -7,5 +7,3 @@ import { Component } from '@angular/core'
 export class EventsAppComponent {
 
 }
-
-const a = 5
