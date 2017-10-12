@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { EventsListComponent } from './events-list.component';
 
 @Component({
   selector: 'event-thumbnail',
@@ -13,6 +14,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
         <span>&nbsp;</span>
         <span>{{event.location.city}}, {{event.location.country}}</span>
       </div>
+      <ng-content></ng-content>
     </div>
   `
 })
@@ -20,7 +22,11 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class EventThumbnailComponent implements OnInit {
   @Input() event: any
 
-  constructor() { }
+  constructor(private _parent: EventsListComponent) { }
 
   ngOnInit() { }
+
+  logFoo() {
+    console.log(this.event.name, this._parent)
+  }
 }

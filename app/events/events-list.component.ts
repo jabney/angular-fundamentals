@@ -7,8 +7,9 @@ import { EventThumbnailComponent } from './event-thumbnail.component';
     <div>
       <h1>Upcoming Angular 2 Events</h1>
       <hr>
-      <event-thumbnail *ngFor="let event of events" [event]="event"
-        (eventClick)="handleClick($event)"></event-thumbnail>
+      <event-thumbnail #thumb *ngFor="let event of events" [event]="event">
+        <button class="btn btn-primary" (click)="thumb.logFoo()">Log Foo</button>
+      </event-thumbnail>
     </div>
   `
 })
@@ -17,7 +18,7 @@ export class EventsListComponent implements OnInit {
   events = [
     {
       id: 1,
-      name: 'Angular Connect',
+      name: 'Angular Connect 1',
       date: '9/26/2036',
       time: '10:00 am',
       price: 599.99,
@@ -30,7 +31,7 @@ export class EventsListComponent implements OnInit {
     },
     {
       id: 1,
-      name: 'Angular Connect',
+      name: 'Angular Connect 2',
       date: '9/26/2036',
       time: '10:00 am',
       price: 599.99,
