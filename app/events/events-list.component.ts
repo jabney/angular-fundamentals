@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core'
-import { EventThumbnailComponent } from './event-thumbnail.component';
+import { EventThumbnailComponent } from './event-thumbnail.component'
+import eventData from './event-data'
 
 @Component({
   selector: 'events-list',
@@ -7,42 +8,18 @@ import { EventThumbnailComponent } from './event-thumbnail.component';
     <div>
       <h1>Upcoming Angular 2 Events</h1>
       <hr>
-      <event-thumbnail #thumb *ngFor="let event of events" [event]="event">
-        <button class="btn btn-primary" (click)="thumb.logFoo()">Log Foo</button>
-      </event-thumbnail>
+      <div class="row">
+        <div class="col-md-5" *ngFor="let event of events" >
+          <event-thumbnail #thumb [event]="event"></event-thumbnail>
+        </div>
+      </div>
     </div>
   `
 })
 
 export class EventsListComponent implements OnInit {
-  events = [
-    {
-      id: 1,
-      name: 'Angular Connect 1',
-      date: '9/26/2036',
-      time: '10:00 am',
-      price: 599.99,
-      imageUrl: '/app/assets/images/angularconnect-shield.png',
-      location: {
-        address: '1057 DT',
-        city: 'London',
-        country: 'England'
-      }
-    },
-    {
-      id: 1,
-      name: 'Angular Connect 2',
-      date: '9/26/2036',
-      time: '10:00 am',
-      price: 599.99,
-      imageUrl: '/app/assets/images/angularconnect-shield.png',
-      location: {
-        address: '1057 DT',
-        city: 'London',
-        country: 'England'
-      }
-    }
-  ]
+  events = eventData
+
   constructor() { }
 
   ngOnInit() { }
