@@ -13,10 +13,10 @@ import { EventsListComponent } from './events-list.component'
         <span>Location: {{event.location.address}}</span>
         <span class="pad-left">{{event.location.city}}, {{event.location.country}}</span>
       </div>
-      <ng-content></ng-content>
     </div>
   `,
   styles: [`
+    .thumbnail { min-height: 210px; }
     .pad-left { margin-left: 0.5em; }
     .well div { color: #bbb; }
   `]
