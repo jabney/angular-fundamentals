@@ -13,6 +13,9 @@ import { EventsListComponent } from './events-list.component'
         <span>Location: {{event?.location?.address}}</span>
         <span class="pad-left">{{event?.location?.city}}, {{event?.location?.country}}</span>
       </div>
+      <div>
+        Online Url: {{event?.onlineUrl}}
+      </div>
     </div>
   `,
   styles: [`
