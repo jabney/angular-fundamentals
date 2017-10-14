@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { EventThumbnailComponent } from './event-thumbnail.component'
-import eventData from './event-data'
+import { EventService } from './shared/event.service'
+import { ToastrService } from '../common/toastr.service';
 
 @Component({
   selector: 'events-list',
@@ -10,7 +11,9 @@ import eventData from './event-data'
       <hr>
       <div class="row">
         <div class="col-md-5" *ngFor="let event of events" >
-          <event-thumbnail #thumb [event]="event"></event-thumbnail>
+          <event-thumbnail #thumb [event]="event"
+            (click)="handleThumbnailClick(event.name)"
+          ></event-thumbnail>
         </div>
       </div>
     </div>
@@ -18,11 +21,20 @@ import eventData from './event-data'
 })
 
 export class EventsListComponent implements OnInit {
-  events = eventData
+  public events: any[]
 
-  constructor() { }
+  constructor(
+    private _es: EventService,
+    private _ts: ToastrService
+  ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.events = this._es.getEvents()
+  }
+
+  handleThumbnailClick(eventName: string) {
+    this._ts.success(eventName, 'event')
+  }
 
   handleClick(component: EventThumbnailComponent) {
     console.log(component)
