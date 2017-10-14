@@ -7,7 +7,7 @@ import { EventsListComponent } from './events-list.component'
     <div class="well hoverwell thumbnail">
       <h2>{{event?.name}}</h2>
       <div>Date: {{event?.date}}</div>
-      <div [ngSwitch]="event?.time">
+      <div [ngClass]="getStartTimeClass(event)" [ngSwitch]="event?.time">
         Time: {{event?.time}}
         <span *ngSwitchCase="'8:00 am'">(Early start)</span>
         <span *ngSwitchCase="'10:00 am'">(Late start)</span>
@@ -27,6 +27,8 @@ import { EventsListComponent } from './events-list.component'
     .thumbnail { min-height: 210px; }
     .pad-left { margin-left: 0.5em; }
     .well div { color: #bbb; }
+    .green { color: lime !important; }
+    .bold { font-weight: bold; }
   `]
 })
 export class EventThumbnailComponent implements OnInit {
@@ -38,5 +40,24 @@ export class EventThumbnailComponent implements OnInit {
 
   logFoo() {
     console.log(this.event.name, this._parent)
+  }
+
+  getStartTimeClass(event) {
+    const isEarlyStart = event && event.time === '8:00 am'
+    return { green: isEarlyStart, bold: isEarlyStart }
+
+    // // We could also return a string.
+    // if (isEarlyStart) {
+    //   return 'green bold'
+    // } else {
+    //   return ''
+    // }
+
+    // // We could aslo return an array of strings.
+    // if (isEarlyStart) {
+    //   return ['green', 'bold']
+    // } else {
+    //   return []
+    // }
   }
 }
