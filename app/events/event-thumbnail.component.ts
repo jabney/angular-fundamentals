@@ -7,7 +7,7 @@ import { EventsListComponent } from './events-list.component'
     <div class="well hoverwell thumbnail">
       <h2>{{event?.name}}</h2>
       <div>Date: {{event?.date}}</div>
-      <div [ngClass]="getStartTimeClass(event)" [ngSwitch]="event?.time">
+      <div [ngStyle]="getStartTimeStyle(event)" [ngSwitch]="event?.time">
         Time: {{event?.time}}
         <span *ngSwitchCase="'8:00 am'">(Early start)</span>
         <span *ngSwitchCase="'10:00 am'">(Late start)</span>
@@ -16,7 +16,9 @@ import { EventsListComponent } from './events-list.component'
       <div>Price: \${{event?.price}}</div>
       <div *ngIf="event?.location">
         <span>Location: {{event?.location?.address}}</span>
-        <span class="pad-left">{{event?.location?.city}}, {{event?.location?.country}}</span>
+        <span class="pad-left">
+          {{event?.location?.city}}, {{event?.location?.country}}
+        </span>
       </div>
       <div *ngIf="event?.onlineUrl">
         Online Url: {{event?.onlineUrl}}
@@ -34,16 +36,14 @@ import { EventsListComponent } from './events-list.component'
 export class EventThumbnailComponent implements OnInit {
   @Input() event: any
 
-  constructor(private _parent: EventsListComponent) { }
+  constructor() { }
 
   ngOnInit() { }
 
-  logFoo() {
-    console.log(this.event.name, this._parent)
-  }
-
   getStartTimeClass(event) {
     const isEarlyStart = event && event.time === '8:00 am'
+
+    // Return an object containing css class names set to true or false.
     return { green: isEarlyStart, bold: isEarlyStart }
 
     // // We could also return a string.
@@ -59,5 +59,15 @@ export class EventThumbnailComponent implements OnInit {
     // } else {
     //   return []
     // }
+  }
+
+  getStartTimeStyle(event) {
+    const isEarlyStart = event && event.time === '8:00 am'
+
+    if (isEarlyStart) {
+      return { 'color': 'lime', 'font-weight': 'bold' }
+    }
+
+    return {}
   }
 }
