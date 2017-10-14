@@ -35,8 +35,4 @@ export class EventsListComponent implements OnInit {
   handleThumbnailClick(eventName: string) {
     this._ts.success(eventName, 'event')
   }
-
-  handleClick(component: EventThumbnailComponent) {
-    console.log(component)
-  }
 }
