@@ -19,7 +19,7 @@ export class EventDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    const id = this._route.snapshot.params.id
+    const id = this._route.snapshot.params['id']
     this.event = this._es.getEvent(+id)
   }
 }
