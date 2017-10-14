@@ -9,4 +9,8 @@ export class EventService {
   getEvents() {
     return eventData.slice()
   }
+
+  getEvent(id: number) {
+    return eventData.find((event) => event.id === id)
+  }
 }
