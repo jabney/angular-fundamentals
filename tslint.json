@@ -9,6 +9,7 @@
         "no-console": false,
         "no-empty": false,
         "no-string-literal": false,
+        "only-arrow-functions": false,
         "object-literal-sort-keys": false,
         "ordered-imports": false,
         "quotemark": {
