@@ -13,9 +13,8 @@ import { NavbarComponent } from './nav/navbar.component'
 import { EventDetailsComponent } from './events/event-details/event-details.component'
 import { CreateEventComponent } from './events/create-event.component'
 import { Error404Component } from './errors/404.component'
-
+import { EventsListResolverService } from './events/events-list-resolver.service'
 import { appRoutes } from './routes'
-import { EventsListResolverService } from './events/events-list-resolver.service';
 
 @NgModule({
   imports: [
