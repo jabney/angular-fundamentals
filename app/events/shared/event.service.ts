@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core'
 import { Subject } from 'rxjs/Subject'
-import eventData from './event-data'
+import { Observable } from 'rxjs/Observable'
+import { IEvent } from './event.model'
+import { eventData } from './event-data'
 import 'rxjs/add/operator/map'
 
 @Injectable()
@@ -8,13 +10,13 @@ export class EventService {
 
   constructor() { }
 
-  getEvents() {
-    const subject = new Subject<any[]>()
+  getEvents(): Observable<IEvent[]> {
+    const subject = new Subject<IEvent[]>()
     setTimeout(() => { subject.next(eventData.slice()); subject.complete() }, 100)
     return subject.asObservable()
   }
 
-  getEvent(id: number) {
+  getEvent(id: number): IEvent {
     return eventData.find((event) => event.id === id)
   }
 }
