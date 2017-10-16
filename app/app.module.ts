@@ -6,6 +6,7 @@ import { EventsAppComponent } from './events-app.component'
 import { NavbarComponent } from './nav/navbar.component'
 import { Error404Component } from './errors/404.component'
 
+import { AuthService } from './user/auth.service'
 import {
   EventService,
   EventRouteActivatorService,
@@ -38,6 +39,7 @@ import { appRoutes } from './routes'
   bootstrap: [ EventsAppComponent ],
   providers: [
     EventService,
+    AuthService,
     ToastrService,
     EventRouteActivatorService,
     EventsListResolverService,
