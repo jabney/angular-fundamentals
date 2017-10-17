@@ -24,12 +24,15 @@ export class ProfileComponent implements OnInit {
 
   public ngOnInit() {
     const firstName = new FormControl(
-      this._as.currentUser.firstName,
-      Validators.required)
+      this._as.currentUser.firstName, [
+        Validators.required,
+        Validators.pattern(/[A-Za-z].*/)
+      ])
 
     const lastName = new FormControl(
-      this._as.currentUser.lastName,
-      Validators.required)
+      this._as.currentUser.lastName, [
+        Validators.required
+    ])
 
     this.profileForm = new FormGroup({ firstName, lastName })
   }
@@ -48,4 +51,13 @@ export class ProfileComponent implements OnInit {
   public controlIsValid(control: FormControl) {
     return control.valid || control.untouched
   }
+
+  public controlErrorMsg(control: FormControl) {
+    const msg = {
+      required: 'Required',
+      pattern: 'Must start with a letter'
+    }
+    return msg[Object.keys(control.errors)[0]]
+  }
 }
+
