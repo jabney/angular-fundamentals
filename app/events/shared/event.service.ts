@@ -19,4 +19,10 @@ export class EventService {
   getEvent(id: number): IEvent {
     return eventData.find((event) => event.id === id)
   }
+
+  saveEvent(event: IEvent) {
+    event.id = 999
+    event.sessions = []
+    eventData.push(event)
+  }
 }
