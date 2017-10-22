@@ -16,7 +16,8 @@ import {
   EventDetailsComponent,
   CreateEventComponent,
   EventsListResolverService,
-  CreateSessionComponent
+  CreateSessionComponent,
+  SessionListComponent
 } from './events/index'
 
 import { ToastrService } from './common/toastr.service'
@@ -39,6 +40,7 @@ import { appRoutes } from './routes'
     EventDetailsComponent,
     CreateEventComponent,
     CreateSessionComponent,
+    SessionListComponent,
     Error404Component
   ],
   bootstrap: [ EventsAppComponent ],
