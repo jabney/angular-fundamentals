@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms'
-import { ISession } from '../index';
+import { FormControl, FormGroup, Validators, ValidatorFn, ValidationErrors } from '@angular/forms'
+import { ISession, restrictedWords } from '../index'
 
 @Component({
   selector: 'create-session',
@@ -32,7 +32,8 @@ export class CreateSessionComponent implements OnInit {
     this.level = new FormControl('', Validators.required)
     this.abstract = new FormControl('', [
       Validators.required,
-      Validators.maxLength(400)
+      Validators.maxLength(400),
+      restrictedWords(['foo', 'bar'])
     ])
 
     this.newSessionForm = new FormGroup({
