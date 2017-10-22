@@ -14,7 +14,7 @@ import { Subscription } from 'rxjs/Subscription';
     .error ::-moz-input-placeholder { color: #999; }
     .error :-moz-input-placeholder { color: #999; }
     .error :-ms-input-placeholder { color: #999; }
-`]
+  `]
 })
 
 export class CreateEventComponent implements OnInit, AfterViewInit, OnDestroy {
