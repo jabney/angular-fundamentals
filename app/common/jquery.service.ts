@@ -1,2 +1,3 @@
+import { OpaqueToken } from '@angular/core'
 
-export class JQuery { }
+export const JQ_TOKEN = new OpaqueToken('jquery')
