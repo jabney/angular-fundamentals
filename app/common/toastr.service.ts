@@ -1,25 +1,34 @@
-import { Injectable } from '@angular/core'
+import { OpaqueToken } from '@angular/core'
 
-declare const toastr: any
+// export const TOASTR_TOKEN = new OpaqueToken('toastr')
 
-@Injectable()
-export class ToastrService {
+export class Toastr {
+  success(msg: string, title?: string) {}
+  info(msg: string, title?: string) {}
+  warning(msg: string, title?: string) {}
+  error(msg: string, title?: string) {}
+}
 
-  constructor() { }
+// declare const toastr: any
 
-  success(message: string, title?: string) {
-    toastr.success(message, title)
-  }
+// @Injectable()
+// export class ToastrService {
 
-  info(message: string, title?: string) {
-    toastr.info(message, title)
-  }
+//   constructor() { }
 
-  warning(message: string, title?: string) {
-    toastr.warning(message, title)
-  }
+//   success(message: string, title?: string) {
+//     toastr.success(message, title)
+//   }
 
-  error(message: string, title?: string) {
-    toastr.error(message, title)
-  }
+//   info(message: string, title?: string) {
+//     toastr.info(message, title)
+//   }
+
+//   warning(message: string, title?: string) {
+//     toastr.warning(message, title)
+//   }
+
+//   error(message: string, title?: string) {
+//     toastr.error(message, title)
+//   }
 }

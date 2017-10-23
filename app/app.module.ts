@@ -22,8 +22,10 @@ import {
 } from './events/index'
 
 import { AuthService } from './user/auth.service'
-import { ToastrService } from './common/toastr.service'
+import { Toastr } from './common/toastr.service'
 import { appRoutes } from './routes'
+
+declare const toastr: Toastr
 
 @NgModule({
   imports: [
@@ -50,9 +52,9 @@ import { appRoutes } from './routes'
   providers: [
     EventService,
     AuthService,
-    ToastrService,
     EventRouteActivatorService,
     EventsListResolverService,
+    { provide: Toastr, useValue: toastr },
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
   ],
 })
