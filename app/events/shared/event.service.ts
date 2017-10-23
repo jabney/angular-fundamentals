@@ -38,7 +38,7 @@ export class EventService {
     return Observable.of(eventData.reduce((list, event) => {
       return list.concat(event.sessions.filter((session) => {
         return reTerm.test(session.name) || reTerm.test(session.abstract)
-      }).map((session) => ({ eventId: event.id, session })))
+      }).map((session) => ({ eventId: event.id, eventName: event.name, session })))
     }, []))
   }
 }
