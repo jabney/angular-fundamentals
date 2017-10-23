@@ -35,7 +35,6 @@ export class NavbarComponent implements OnInit {
   searchSessions(term) {
     this._es.searchSessions(term).subscribe((sessions) => {
       this.foundSessions = sessions
-      console.log(this.foundSessions)
     })
   }
 }
