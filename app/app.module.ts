@@ -23,9 +23,12 @@ import {
 
 import { AuthService } from './user/auth.service'
 import { Toastr } from './common/toastr.service'
+import { JQuery } from './common/jquery.service'
+
 import { appRoutes } from './routes'
 
 declare const toastr: Toastr
+declare const jQuery: any
 
 @NgModule({
   imports: [
@@ -55,6 +58,7 @@ declare const toastr: Toastr
     EventRouteActivatorService,
     EventsListResolverService,
     { provide: Toastr, useValue: toastr },
+    { provide: JQuery, useValue: jQuery },
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState }
   ],
 })

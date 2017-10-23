@@ -3,7 +3,8 @@ import { Subject } from 'rxjs/Subject'
 import { Observable } from 'rxjs/Observable'
 import { IEvent } from './event.model'
 import { eventData } from './event-data'
-import 'rxjs/add/operator/map'
+import 'rxjs/add/observable/of'
+import 'rxjs/add/operator/delay'
 
 @Injectable()
 export class EventService {
@@ -27,8 +28,17 @@ export class EventService {
   }
 
   updateEvent(event: IEvent) {
-    // const _event = this.getEvent(event.id)
     const index = eventData.findIndex((e) => e.id === event.id)
     eventData[index] = event
+  }
+
+  searchSessions(term: string) {
+    const reTerm = new RegExp(term, 'i')
+
+    return Observable.of(eventData.reduce((list, event) => {
+      return list.concat(event.sessions.filter((session) => {
+        return reTerm.test(session.name) || reTerm.test(session.abstract)
+      }).map((session) => ({ eventId: event.id, session })))
+    }, []))
   }
 }
