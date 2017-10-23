@@ -31,4 +31,4 @@ export class Toastr {
 //   error(message: string, title?: string) {
 //     toastr.error(message, title)
 //   }
-}
+
