@@ -8,6 +8,7 @@ import { IEvent, ISession } from '../index'
   styles: [`
     .container { padding-left: 20px; padding-right: 20px; }
     .event-image { height: 100px; }
+    button.btn:focus { outline: 0; }
     a { cursor: pointer; }
   `]
 })
@@ -15,6 +16,8 @@ import { IEvent, ISession } from '../index'
 export class EventDetailsComponent implements OnInit {
   public event: IEvent
   public addMode: boolean
+  public filter: string = 'all'
+  public sort: string = 'name'
 
   constructor(
     private _es: EventService,
@@ -40,5 +43,13 @@ export class EventDetailsComponent implements OnInit {
 
   cancelAddSession() {
     this.addMode = false;
+  }
+
+  setFilter(filter: string) {
+    this.filter = filter
+  }
+
+  setSort(sort: string) {
+    this.sort = sort
   }
 }
